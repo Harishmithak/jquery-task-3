@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#MyForm").validate({
+                rules: {
+                    UName: {
+                        required: true,
+                        minlength: 2,
+                    
+                        maxlength: 10,
+                        pattern: /^[a-zA-Z]+$/
+                    },
+                    
+                    Email: {
+                        required: true,
+                        email: true,
+                    },
+                    password: {
+                        required: true,
+                        password: true,
+                        minlength: 8,
+                        maxlength: 16,
+                        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#])[A-Za-z\d@$#]{8,16}$/
+
+                    },
+                    mob: {
+                        required: true,
+                        pattern: /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/
+                    },
+
+                },
+                messages: {
+                    UName: {
+                        required: "Please enter your username",
+                        minlength: "Username must be at least 2 characters long",
+                        maxlength: "Username cannot be more than 10 characters long",
+                        pattern: "Username must contain only alphabets"
+                    },
+                    password: {
+                        required: "Please enter your password",
+                        minlength: "Password must be at least 8 characters long",
+                        maxlength: "Password cannot be more than 16 characters long",
+                        pattern: "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@$#) and must be between 8-16 characters long"
+                    },
+                    Email: {
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    mobile: {
+                        required: "Please enter your mobile number",
+                        pattern: "Mobile number must be in 3-3-4 format"
+                    }
+            
+                },
+                errorPlacement: function (error, element) {  //callback function with two parameter error jquery object and elemet
+                    if (element.attr("name") == "password") { //if the attribute of the input is eqal to password 
+                        error.insertAfter($("#password-error-message"));//error msg will be printed after the div
+                    } else {
+                        error.insertAfter(element); // else it will be printed after the input fiels i.e., element
+                    }
+                },
+                submitHandler: function (form) {// Prevent the form from submitting if there are validation errors
+                    form.submit();
+                
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="MyForm" method="get" action="" name="MyForm">
+            <fieldset>
+                <legend>login form</legend>
+                <div class="form1">
+                    <label for="UName">USERNAME</label>
+                    <input id="UName" name="UName" type="text" minlength="2">
+                </div>
+              
+                <div class="form1">
+                    <label for="Email">E-Mail</label>
+                    <input id="Email" type="email" name="Email">
+                </div>
+                <div class="form1">
+                    <label for="Password">Password</label>
+                    <input type="password" name="password" id="password">
+                    <div id="password-error-message" style="color:red"></div>
+                </div>
+                <div class="form1">
+                    <label for="mob">MOBILE NO</label>
+                    <input type="mobileno" name="mob" id="mob">
+                </div>
+               
+                <div class="form1">
+                    <button type="submit" value="submit">Submit</button>
+                </div>
+            </fieldset>
+            
+           
+</body>
+</html>
