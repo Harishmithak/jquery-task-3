@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <style>
+        body{
+            background-color: aqua;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             $("#MyForm").validate({
@@ -15,18 +21,16 @@
                     UName: {
                         required: true,
                         minlength: 2,
-                    
                         maxlength: 10,
                         pattern: /^[a-zA-Z]+$/
                     },
-                    
+
                     Email: {
                         required: true,
-                        email: true,
+                        email: true
                     },
                     password: {
                         required: true,
-                        password: true,
                         minlength: 8,
                         maxlength: 16,
                         pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#])[A-Za-z\d@$#]{8,16}$/
@@ -35,7 +39,7 @@
                     mob: {
                         required: true,
                         pattern: /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/
-                    },
+                    }
 
                 },
                 messages: {
@@ -55,27 +59,19 @@
                         required: "Please enter your email",
                         email: "Please enter a valid email address"
                     },
-                    mobile: {
+                    mob: {
                         required: "Please enter your mobile number",
                         pattern: "Mobile number must be in 3-3-4 format"
                     }
-            
+
                 },
-                errorPlacement: function (error, element) {  //callback function with two parameter error jquery object and elemet
-                    if (element.attr("name") == "password") { //if the attribute of the input is eqal to password 
-                        error.insertAfter($("#password-error-message"));//error msg will be printed after the div
-                    } else {
-                        error.insertAfter(element); // else it will be printed after the input fiels i.e., element
-                    }
-                },
-                submitHandler: function (form) {// Prevent the form from submitting if there are validation errors
-                    form.submit();
-                
-                }
+
+
             });
         });
     </script>
 </head>
+
 <body>
     <div class="container">
         <form class="form" id="MyForm" method="get" action="" name="MyForm">
@@ -85,26 +81,27 @@
                     <label for="UName">USERNAME</label>
                     <input id="UName" name="UName" type="text" minlength="2">
                 </div>
-              
+
                 <div class="form1">
                     <label for="Email">E-Mail</label>
                     <input id="Email" type="email" name="Email">
                 </div>
                 <div class="form1">
-                    <label for="Password">Password</label>
+                    <label for="password">Password</label>
                     <input type="password" name="password" id="password">
-                    <div id="password-error-message" style="color:red"></div>
+
                 </div>
                 <div class="form1">
                     <label for="mob">MOBILE NO</label>
-                    <input type="mobileno" name="mob" id="mob">
+                    <input type="tel" name="mob" id="mob">
                 </div>
-               
+
                 <div class="form1">
                     <button type="submit" value="submit">Submit</button>
                 </div>
             </fieldset>
-            
-           
+
+
 </body>
+
 </html>
