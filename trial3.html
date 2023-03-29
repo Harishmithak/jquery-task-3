@@ -21,9 +21,14 @@
                     },
                     email:{
                         required:true,
-                        email:true
-
+                
+                        pattern:/^[\w]+@[a-z]{5,}\.[a-z]{2,}$/
+                
+                    },
+                    date:{
+pattern:/(?:0[1-9]|[12][0-9]|3[0-1])[/](?:0[1-9]|1[0-2])[/](?!0000)[0-9]{4}/
                     }
+
 
                 },
                 messages: {
@@ -35,7 +40,10 @@
                     },
                     email: {
                         required: "Please enter your email",
-                        email: "Please enter a valid email address"
+                        pattern: "Please enter a valid email address"
+                    },
+                    date:{
+                        pattern:"please enter valid date"
                     }
                 },
 
@@ -56,6 +64,11 @@
                 <div class="form1">
                     <label for="email">email</label>
                     <input id="email" type="email" name="email">
+                </div>
+                <div class="form1">
+<label for="date" >DATE</label>
+<input type="text" id="date" name="date">
+
                 </div>
 
                 <div class="form1">
