@@ -19,14 +19,15 @@
                         maxlength: 10,
                         pattern: /^[a-zA-Z]+$/
                     },
-                    email:{
-                        required:true,
-                
-                        pattern:/^[\w]+@[a-z]{5,}\.[a-z]{2,}$/
-                
+                    email: {
+                        required: true,
+
+                        pattern: /^[\w]+@[a-z]{5,}\.[a-z]{2,}$/,
+                        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#])[A-Za-z\d@$#]{8,16}$/
+
                     },
-                    date:{
-pattern:/(?:0[1-9]|[12][0-9]|3[0-1])[/](?:0[1-9]|1[0-2])[/](?!0000)[0-9]{4}/
+                    date: {
+                        pattern: /(?:0[1-9]|[12][0-9]|3[0-1])[/](?:0[1-9]|1[0-2])[/](?!0000)[0-9]{4}/
                     }
 
 
@@ -42,8 +43,8 @@ pattern:/(?:0[1-9]|[12][0-9]|3[0-1])[/](?:0[1-9]|1[0-2])[/](?!0000)[0-9]{4}/
                         required: "Please enter your email",
                         pattern: "Please enter a valid email address"
                     },
-                    date:{
-                        pattern:"please enter valid date"
+                    date: {
+                        pattern: "please enter valid date"
                     }
                 },
 
@@ -66,8 +67,8 @@ pattern:/(?:0[1-9]|[12][0-9]|3[0-1])[/](?:0[1-9]|1[0-2])[/](?!0000)[0-9]{4}/
                     <input id="email" type="email" name="email">
                 </div>
                 <div class="form1">
-<label for="date" >DATE</label>
-<input type="text" id="date" name="date">
+                    <label for="date">DATE</label>
+                    <input type="text" id="date" name="date">
 
                 </div>
 
